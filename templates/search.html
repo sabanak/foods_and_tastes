@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+    {% for i in pr %}
+        <li class="one_third">
+          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height:300;width:350"></a>
+            <figcaption>
+              <h6 class="heading">{{i.name}}</h6>
+              <p>{{i.desc|truncatechars:17}}</p>
+               <p>{{i.price}} Rs</p>
+               <p>stock left : {{i.stock}}</p>
+            </figcaption>
+          </figure>
+        </li>
+     {% endfor %}
+      </ul>
+    </section>
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hm/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>
+</html>
+{% endblock %}

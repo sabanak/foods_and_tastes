@@ -1,0 +1,55 @@
+{% load static %}
+<!-- Top Background Image Wrapper -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<!--  <div class="wrapper row0">-->
+<!--    <div id="topbar" class="hoc clear">-->
+<!--      <div class="fl_right">-->
+<!--        <ul class="nospace">-->
+<!--          <li id="searchform">-->
+<!--            <div>-->
+<!--              <form action="#" method="post">-->
+<!--                <fieldset>-->
+<!--                  <legend>Quick Search:</legend>-->
+<!--                  <input type="text" placeholder="Enter search term">-->
+<!--                  <button type="submit"><i class="fas fa-search"></i></button>-->
+<!--                </fieldset>-->
+<!--              </form>-->
+<!--            </div>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<body id="top">
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+
+        <h1><a href="/">AVODHA SHOPPING</a></h1>
+
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="/"><i class="fa fa-home" style="font-size:14px;color:white;" ></i></a></li>
+          <li><a class="active" href="{% url 'cartDetails' %}"><i class="fa fa-shopping-cart" style="font-size:14px;color:white;">{{itc}}</i></a></li>
+          {% if user.is_authenticated %}
+          <li>Hi {{user.username}}</li>
+          <li><a class="active" href="{% url 'logout' %}" style="font-size:14px;">Logout</a></li>
+          {% else %}
+          <li><a class="active" href="{% url 'login' %}" style="font-size:14px;">Login</a></li>
+          <li><a class="active" href="{% url 'register' %}"  style="font-size:14px;">Register</a></li>
+          {% endif %}
+          <ul>
+              <li class="active"><a href="/">All Products</a></li>
+              <li><a class="drop" href="#">Filter</a></li>
+          </ul>
+        </ul>
+      </nav>
+    </header>
+  </div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
