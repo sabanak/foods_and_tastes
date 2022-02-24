@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-
 <!DOCTYPE html>
 <html lang="">
-<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>AVODHA SHOPPING</title>
-<!--<meta charset="utf-8">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
-<!--<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">-->
+<title>FOODS AND TASTES</title>
   <style>
   .dropbtn{
   background-color:green;
@@ -49,59 +43,46 @@
   background-color:lightgreen;
   }
 
-  .abcd{
-    height:100%;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-size:cover;
-    }
+<!--  .abcd{-->
+<!--    height:100%;-->
+<!--    background-position:center;-->
+<!--    background-repeat:no-repeat;-->
+<!--    background-size:100% 100%;-->
+<!--    }-->
   </style>
 </head>
-<body id="top">
+<div class="dropdown">
+  <button class="dropbtn">FILTER ITEM</button>
+  <div class="dropdown-content">
+    <a href="/">ALL PRODUCTS</a>
+    {% for i in ct %}
+    <a href={{i.get_url}}>{{i.name}}</a><br>
+    {% endfor %}
+  </div>
+</div>
+
 
 <!-- Top Background Image Wrapper -->
-<div class="abcd" style="background-image:url('{% static 'hm/images/demo/backgrounds/pine.jpg' %}');" >
-
-
       <div class="wrapper row0">
-    <div id="topbar" class="hoc clear">
-      <div class="fl_right">
-        <ul class="nospace">
-          <li id="searchform">
-            <div>
-              <form action="{% url 'search' %}" method="get">
-                <fieldset>
-                  <legend>Quick Search:</legend>
-                  <input type="text" placeholder="Enter item name to search" name="q">
-                  <button type="submit"><i class="fas fa-search"></i></button>
-                </fieldset>
-              </form>
+        <div id="topbar" class="hoc clear">
+          <div class="fl_right">
+                  <form action="{% url 'search' %}" method="get">
+                    <fieldset>
+                      <legend>Quick Search:</legend>
+                      <input type="text" placeholder="Enter item name to search" name="q">
+                      <button type="submit"><i class="fas fa-search"></i></button>
+                    </fieldset>
+                  </form>
             </div>
-          </li>
-        </ul>
       </div>
     </div>
-<div class="dropdown">
-    <button class="dropbtn">Filter</button>
-    <div class="dropdown-content">
-        <a href="/">All Products</a>
-        {% for i in ct %}
-        <a href={{i.get_url}}>{{i.name}}</a>
-        {% endfor %}
-    </div>
-</div>
 <div id="pageintro" class="hoc clear">
     <article>
       <h3 class="heading">QUALITY FOOD ITEMS</h3>
       <p>Register with us and have quality food items at your door step</p>
-      <footer>
-      </footer>
     </article>
-
   </div>
-
 </div>
-
 </div>
 <!-- End Top Background Image Wrapper -->
 
@@ -112,22 +93,22 @@
 
     <section id="introblocks">
       <ul class="nospace group btmspace-80">
-    {% for i in pg.object_list %} <!--we want objects in pg,so we change {% for i in pr}-->
+        {% for i in pg.object_list %} <!--we want objects in pg,so we change {% for i in pr}-->
         <li class="one_third">
-          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="About image" style="height:300;width:350"></a>
-            <figcaption>
-              <h6 class="heading">{{i.name}}</h6>
-              <p>{{i.desc|truncatechars:17}}</p>
-<!--               <p>{{i.price}} Rs</p>-->
-<!--               <p>stock left : {{i.stock}}</p>-->
-
-
-            </figcaption>
-          </figure>
+              <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="About image" style="height:300;width:350"></a>
+                <figcaption>
+                  <h6 class="heading">{{i.name}}</h6>
+                  <p>{{i.desc|truncatechars:17}}</p>
+    <!--               <p>{{i.price}} Rs</p>-->
+    <!--               <p>stock left : {{i.stock}}</p>-->
+                </figcaption>
+              </figure>
         </li>
      {% endfor %}
       </ul>
     </section>
+  </main>
+</div>
       <!--Paginator-->
       <center>
           {% for p in pg.paginator.page_range %}<!--from variable pg ,from paginator import page_range variable-->
@@ -135,11 +116,5 @@
           <!--when click on page should get that page #we use button sm for displaying page number #activating this button-->
           {% endfor %}
       </center>
-<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
-<script src="{% static 'hm/layout/scripts/jquery.min.js' %}"></script>
-<script src="{% static 'hm/layout/scripts/jquery.backtotop.js' %}"></script>
-<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js' %}"></script>
-</body>
-</html>
 {% endblock %}
+</html>

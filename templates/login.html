@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
-<html>  
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
+<html>
+<head>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">  -->
 <style>  
 body{  
   font-family: Calibri, Helvetica, sans-serif;
@@ -48,8 +48,8 @@ hr {
   opacity: 1;  
 }  
 </style>  
-</head>  
-<body>  
+</head>
+<!--<body>  -->
 <form action="login" method="post">
     {% csrf_token %}
   <div class="container">  
@@ -65,6 +65,6 @@ hr {
 
 <button type="submit" class="loginbtn">Login</button>
 </form>  
-</body>  
-</html>
+<!--</body>  -->
 {% endblock %}
+</html>
